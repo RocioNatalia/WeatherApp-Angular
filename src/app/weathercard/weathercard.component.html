@@ -1,17 +1,73 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <input [(ngModel)]="city">
-    <input [(ngModel)]="countrycode">
-  </mat-card-content>
-  <mat-card-actions>
-    <button (click)="GetWeather()">tocar</button>
-  </mat-card-actions>
-</mat-card>
+<div class="container">
+  <div class="header">
+
+    <img src="../../assets/images/rainbow.png">
+    <p>Weather App</p>
+
+  </div>
+  <div class="content">
+
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <input [(ngModel)]="city" matInput placeholder="Ex: Buenos Aires" (focus)="result= false">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Country Code</mat-label>
+      <input [(ngModel)]="countrycode" matInput placeholder="Ex: AR" (focus)="result= false">
+    </mat-form-field>
+
+  </div>
+  <div class="actions">
+    <button mat-flat-button color="primary" (click)="GetWeather()">Get Weather</button>
+  </div>
+
+
+  <div class="weather">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <div *ngIf="error" class="error">
+
+      <img src="../../assets/images/error.png">
+      <br>
+      <p>{{menssageError}}</p>
+    </div>
+
+
+    <div *ngIf="result" class="result">
+
+      <div class="place">
+        <p class="title">{{city}}, {{countrycode}}</p>
+        <p class="subtitle">{{weather}}</p>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div class="info">
+
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>chevron_right</mat-icon>
+            Temperature: {{temperature}} ªC
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>chevron_right</mat-icon>
+            Humidity: {{humidity}} %
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>chevron_right</mat-icon>
+            Wind Speed: {{wind}} Km
+          </mat-list-item>
+        </mat-list>
+
+      </div>
+
+      <div class="image {{cover}}"></div>
+
+    </div>
+
+
+  </div>
+
+</div>
 
 
 

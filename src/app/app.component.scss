@@ -1,0 +1,10 @@
+.container-all{
+  display: flex;
+  justify-content: center;
+
+  app-weathercard{
+    margin-top: 30px;
+    width: 500px;
+  }
+
+}

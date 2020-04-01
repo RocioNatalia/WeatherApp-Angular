@@ -1,24 +1,115 @@
-.example-card {
-  max-width: 400px;
+.container {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+
+
+  .header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 30px;
+
+    img {
+      width: 40px;
+      margin-right: 8px;
+    }
+
+    p {
+      margin-block-end: 5px;
+    }
+
+  }
+
+  .content {
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .actions {
+    button {
+      width: 100%;
+    }
+  }
+
+  .weather {
+
+    mat-progress-bar {
+      margin-bottom: 20px
+    }
+
+    margin-top: 20px;
+
+    .error {
+      text-align: center;
+      padding: 5px;
+
+      img {
+        width: 100px;
+      }
+    }
+
+    .result {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "place image" "info image" "info image" "info image";
+
+
+      .image {
+        grid-area: image;
+        justify-self: center;
+        background-size: cover;
+        width: 200px;
+        height: 200px;
+
+      }
+
+      .info {
+        grid-area: info;
+        justify-content: space-evenly !important;
+        text-align: left;
+
+        mat-list {
+
+          mat-list-item {
+            padding: 5px 0px 5px 0px;
+            height: auto;
+          }
+        }
+      }
+
+      .place {
+        grid-area: place;
+        padding: 5px 15px 0px 15px;
+
+        .title {
+          font-size: 24px;
+        }
+
+        .subtitle {
+          font-size: 20px;
+        }
+      }
+
+      .Rain {
+        background-image: url("../../assets/images/rain.png")
+      }
+
+      .Clouds{
+        background-image: url("../../assets/images/cloudy.png")
+      }
+
+      .Clear{
+        background-image: url("../../assets/images/clear.png")
+      }
+
+
+    }
+  }
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
 
-.example-container {
-  width: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
 
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  padding: 20px;
-}

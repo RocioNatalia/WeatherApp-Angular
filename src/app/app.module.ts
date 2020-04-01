@@ -9,6 +9,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -22,7 +29,14 @@ import {FormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     MatCardModule,
     MatSidenavModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
