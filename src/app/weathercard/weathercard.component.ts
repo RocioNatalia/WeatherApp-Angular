@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from '../weather.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-weathercard',
@@ -9,8 +10,8 @@ import {WeatherService} from '../weather.service';
 export class WeathercardComponent {
 
   private weatherService: any;
-  public city: string;
-  public countrycode: string;
+  public city = '';
+  public countrycode = '';
 
   public error: boolean;
   public menssageError: string;
@@ -31,29 +32,38 @@ export class WeathercardComponent {
   }
 
   public GetWeather() {
+
     this.loading = true;
-    this.weatherService.getWeather(this.city.trim(), this.city.trim()).subscribe(res => {
-      this.loading = false;
-      this.error = false;
-      this.result = true;
+    try {
+      this.weatherService.getWeather(this.city.trim(), this.city.trim()).subscribe(res => {
+        this.loading = false;
+        this.error = false;
+        this.result = true;
 
-      this.city = res.name;
-      this.countrycode = res.sys.country;
+        this.city = res.name;
+        this.countrycode = res.sys.country;
 
-      this.weather = res.weather[0].description.replace(/\b\w/g, l => l.toUpperCase());
+        this.weather = res.weather[0].description.replace(/\b\w/g, l => l.toUpperCase());
 
-      this.humidity = res.main.humidity;
-      this.temperature = res.main.temp;
-      this.wind = res.wind.speed;
+        this.humidity = res.main.humidity;
+        this.temperature = res.main.temp;
+        this.wind = res.wind.speed;
 
-      this.cover = res.weather[0].main;
+        this.cover = res.weather[0].main;
 
-    }, err => {
+      }, err => {
+        this.loading = false;
+        this.error = true;
+        this.result = false;
+        this.menssageError = err.error.message;
+      });
+    } catch (e) {
       this.loading = false;
       this.error = true;
       this.result = false;
-      this.menssageError = err.error.message;
-    });
+      console.log(e);
+    }
+
   }
 
 }
